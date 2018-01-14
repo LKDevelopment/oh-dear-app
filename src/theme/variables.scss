@@ -23,7 +23,12 @@ $app-direction: ltr;
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
 
 
-
+.toolbar-background {
+  background-color: #E12C31 !important;
+}
+.toolbar-title, .bar-button-menutoggle{
+  color:#ffffff !important;
+}
 
 // Named Color Variables
 // --------------------------------------------------
@@ -86,3 +91,5 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+
+
