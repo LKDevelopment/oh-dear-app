@@ -1,0 +1,8 @@
+{
+  "name": "oh-dear-app",
+  "app_id": "33a002bd",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
