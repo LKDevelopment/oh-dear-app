@@ -28,7 +28,15 @@ export class User {
     this.id = data.id;
     this.name = data.name;
     this.email = data.email;
-    this.photo_url = data.photo_url;
-    this.teams = data.teams['data'];
+    this.photo_url = data.photoUrl;
+    this.parseTeams(data.teams);
+  }
+
+  public parseTeams(data) {
+    data.data.attributes.forEach((value, key) => {
+      var tmp = new Team();
+      tmp.setData(value);
+      this.teams.push(tmp);
+    })
   }
 }

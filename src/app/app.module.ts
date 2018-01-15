@@ -22,7 +22,7 @@ import {LoginModal} from "../pages/login/login";
 import {IonicStorageModule} from "@ionic/storage";
 import {SelectTeamModal} from "../pages/select-team/select-team";
 import { Pro } from '@ionic/pro';
-const IonicPro = Pro.init('APP_ID', {
+const IonicPro = Pro.init('33a002bd', {
   appVersion: "0.0.1"
 });
 @Injectable()

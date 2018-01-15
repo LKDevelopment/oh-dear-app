@@ -8,7 +8,7 @@ import {Storage} from "@ionic/storage";
 @Injectable()
 export class Globals {
   public api_key: string = null;
-  public selected_team: Team = null;
+  public selected_team: Team = new Team();
   public user: User = null;
   public loaded_from_storage: boolean = false;
   public available_teams: Array<Team> = [];
@@ -33,8 +33,11 @@ export class Globals {
       tmp.setData(data);
       this.user = tmp;
       this.available_teams = [];
+      console.log(this.user.teams);
+
       this.available_teams = this.user.teams;
     });
+
     this.api.getSites((data) => {
       this.available_sites = [];
       data['data'].forEach((value, key) => {

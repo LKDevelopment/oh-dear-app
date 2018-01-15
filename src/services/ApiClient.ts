@@ -9,7 +9,7 @@ export class ApiClient {
   }
 
   public getSites(callback) {
-    this.client.get('https://ohdearapp.com/api/sites')
+    this.client.get('https://proxy.lkdev.co/api/sites')
       .subscribe(
         data => callback(data),
         err => alert(err)
@@ -17,7 +17,7 @@ export class ApiClient {
   }
 
   public getUser(callback) {
-    this.client.get('https://ohdearapp.com/api/me')
+    this.client.get('https://proxy.lkdev.co/api/me')
       .subscribe(
         data => callback(data),
         err => alert(err)

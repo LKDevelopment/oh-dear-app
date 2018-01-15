@@ -10,7 +10,7 @@
   <ion-list>
     <ion-item>
       <ion-label>Your actual selected Team:</ion-label>
-      <ion-select [(ngModel)]="globals.selected_team">
+      <ion-select [(ngModel)]="selected_team">
         <ion-option *ngFor="let team of globals.available_teams" [value]="team" [selected]="team.id == globals.selected_team.id">{{ team.name }}</ion-option>
       </ion-select>
     </ion-item>
