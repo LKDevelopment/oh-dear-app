@@ -9,7 +9,7 @@
 
 <ion-content>
   <div class="m-4">
-    <div class="card pb-8 cloak-fade">
+    <div class="card pb-8 cloak-fade shadow shadow-mg">
       <table class="site-list-table w-full">
         <thead>
         <th style="width: 25%;">Site</th>
@@ -25,7 +25,7 @@
           <td><span class="check-result" [ngClass]="{ 'is-succeeded' : item.uptime_check.enabled, 'is-failed': !item.uptime_check.enabled}">{{ item.uptime_check.enabled ? 'Is enabled': 'Is disabled'}}</span></td>
           <td><span class="check-result" [ngClass]="{ 'is-succeeded' : item.mixed_content_check.enabled, 'is-failed': !item.mixed_content_check.enabled}">{{ item.mixed_content_check.enabled ? 'Is enabled': 'Is disabled'}}</span></td>
           <td><span class="check-result" [ngClass]="{ 'is-succeeded' : item.certificate_health_check.enabled, 'is-failed': !item.certificate_health_check.enabled}">{{ item.certificate_health_check.enabled ? 'Is enabled': 'Is disabled'}}</span></td>
-          <td>Last Check</td>
+          <td>{{ item.latest_run_date }}</td>
         </tr>
         </tbody>
       </table>

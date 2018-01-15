@@ -8,7 +8,7 @@ import {Storage} from "@ionic/storage";
 @Injectable()
 export class Globals {
   public api_key: string = null;
-  public selected_team: Team = new Team();
+  public selected_team: Team = null;
   public user: User = null;
   public loaded_from_storage: boolean = false;
   public available_teams: Array<Team> = [];
@@ -59,6 +59,24 @@ export class Globals {
           error => console.error(error)
         );
     }
+    if(this.selected_team == null){
+      this.storage.get('selected_team')
+        .then(
+          (data) => {
+            if (data == undefined) {
+              this.selected_team = null;
+            } else {
+              this.selected_team = data;
+            }
+          },
+          error => console.error(error)
+        );
+    }
+  }
+
+  public setSelectedTeam(team: Team) {
+    this.selected_team = team;
+    this.storage.set('selected_team', team);
   }
 
   public saveApiKey(api_key) {

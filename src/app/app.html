@@ -23,7 +23,7 @@
   </ion-header>
 
   <ion-content *ngIf="globals.isAuthentificated()">
-    <ion-item color="danger" menuClose="" (click)="selectTeamModal()">
+    <ion-item color="danger" menuClose="" (click)="selectTeamModal()" *ngIf="globals.selected_team != null">
       << {{ globals.selected_team.name}}
     </ion-item>
 

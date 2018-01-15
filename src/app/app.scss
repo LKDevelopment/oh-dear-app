@@ -13,7 +13,9 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
-
+ion-content{
+  background-color:#F5F5F5;
+}
 .button {
   background-color: #e32929;
   border-width: 2px;
@@ -46,20 +48,15 @@
     text-transform: uppercase;
     text-align: left;
     font-size: 11.25px;
-    font-size: .75rem;
     padding-top: 7.5px;
-    padding-top: .5rem;
     padding-bottom: 7.5px;
-    padding-bottom: .5rem;
     letter-spacing: .05em;
     font-weight: 600;
     color: #989898;
   }
   & td {
     padding-top: 15px;
-    padding-top: 1rem;
     padding-bottom: 15px;
-    padding-bottom: 1rem;
     background-color: #fff;
     border-top-width: 1px;
   }
@@ -91,13 +88,13 @@
   transition: background-color .5s ease-out;
   &.is-succeeded {
     background-color: #e4f7df;
-    &:before{
+    &:before {
       background-color: #b6de8b;
     }
   }
   &.is-errored-or-timed-out, &.is-failed {
     background-color: #f9dddd;
-    &:before{
+    &:before {
       background-color: #b6de8b;
     }
   }
@@ -117,4 +114,15 @@
     -webkit-transition: background-color .8s ease-out;
     transition: background-color .8s ease-out;
   }
+}
+
+.help {
+  background-color: #ebf3fd;
+  margin-bottom: 7.5px;
+  margin-bottom: .5rem;
+  padding-left: 7.5px;
+  padding: .25rem .5rem;
+  padding-right: 7.5px;
+  padding-top: 3.75px;
+  padding-bottom: 3.75px;
 }

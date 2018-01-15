@@ -18,7 +18,9 @@ export class LoginModal {
     this.globals.saveApiKey(this.api_key);
     this.globals.load();
     this.viewCtrl.dismiss();
+
     let modal = this.modalCtrl.create(SelectTeamModal);
     modal.present();
+
   }
 }

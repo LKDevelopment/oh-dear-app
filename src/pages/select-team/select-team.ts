@@ -15,8 +15,8 @@ export class SelectTeamModal {
   }
 
   select() {
-    console.log(this.selected_team);
-    this.globals.selected_team = this.selected_team;
+
+    this.globals.setSelectedTeam(this.selected_team);
     this.globals.load();
     this.viewCtrl.dismiss();
 

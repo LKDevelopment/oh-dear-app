@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {ErrorHandler, NgModule} from '@angular/core';
+import {ErrorHandler, Injectable, Injector, NgModule} from '@angular/core';
 import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 
 import {MyApp} from './app.component';
@@ -21,7 +21,30 @@ import {ApiClient} from "../services/ApiClient";
 import {LoginModal} from "../pages/login/login";
 import {IonicStorageModule} from "@ionic/storage";
 import {SelectTeamModal} from "../pages/select-team/select-team";
+import { Pro } from '@ionic/pro';
+const IonicPro = Pro.init('APP_ID', {
+  appVersion: "0.0.1"
+});
+@Injectable()
+export class MyErrorHandler implements ErrorHandler {
+  ionicErrorHandler: IonicErrorHandler;
 
+  constructor(injector: Injector) {
+    try {
+      this.ionicErrorHandler = injector.get(IonicErrorHandler);
+    } catch(e) {
+      // Unable to get the IonicErrorHandler provider, ensure
+      // IonicErrorHandler has been added to the providers list below
+    }
+  }
+
+  handleError(err: any): void {
+    IonicPro.monitoring.handleNewError(err);
+    // Remove this if you want to disable Ionic's auto exception handling
+    // in development mode.
+    this.ionicErrorHandler && this.ionicErrorHandler.handleError(err);
+  }
+}
 @NgModule({
   declarations: [
     MyApp,
@@ -48,7 +71,7 @@ import {SelectTeamModal} from "../pages/select-team/select-team";
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    [{ provide: ErrorHandler, useClass: MyErrorHandler }],
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
