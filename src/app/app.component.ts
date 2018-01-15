@@ -4,7 +4,9 @@ import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 
 import {HomePage} from '../pages/home/home';
-import {ListPage} from '../pages/list/list';
+import {ListPage} from '../pages/sites/sites';
+import {Globals} from "../services/globals";
+import {ApiClient} from "../services/ApiClient";
 
 @Component({
   templateUrl: 'app.html'
@@ -16,7 +18,7 @@ export class MyApp {
 
   pages: Array<{ title: string, component: any, auth: boolean }>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public globals: Globals, public apiClient: ApiClient) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -42,7 +44,7 @@ export class MyApp {
     this.nav.setRoot(page.component);
   }
 
-  isAuth(page){
+  isAuth(page) {
     return !page.auth;
   }
 }
