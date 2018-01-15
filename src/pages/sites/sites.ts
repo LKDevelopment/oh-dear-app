@@ -7,7 +7,7 @@ import {Site} from "../../models/site";
   selector: 'page-list',
   templateUrl: 'sites.html'
 })
-export class ListPage {
+export class SitesPage {
   items: Array<Site>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public api_client:ApiClient) {

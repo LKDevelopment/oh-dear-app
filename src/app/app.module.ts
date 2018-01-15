@@ -4,7 +4,7 @@ import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 
 import {MyApp} from './app.component';
 import {HomePage} from '../pages/home/home';
-import {ListPage} from '../pages/sites/sites';
+import {SitesPage} from '../pages/sites/sites';
 
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
@@ -23,7 +23,7 @@ import {ApiClient} from "../services/ApiClient";
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    SitesPage
   ],
   imports: [
     BrowserModule,
@@ -35,7 +35,7 @@ import {ApiClient} from "../services/ApiClient";
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    SitesPage
   ],
   providers: [
     StatusBar,
