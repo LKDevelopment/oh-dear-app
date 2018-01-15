@@ -3,23 +3,27 @@ import {Team} from "../models/User/team";
 import {User} from "../models/User/user";
 import {Site} from "../models/site";
 import {ApiClient} from "./ApiClient";
-import {NativeStorage} from "@ionic-native/native-storage";
+import {Storage} from "@ionic/storage";
 
 @Injectable()
 export class Globals {
   public api_key: string = null;
-  public selected_team: Team;
+  public selected_team: Team = new Team();
   public user: User = null;
-
+  public loaded_from_storage: boolean = false;
   public available_teams: Array<Team> = [];
   public available_sites: Array<Site> = [];
 
-  constructor(public api: ApiClient, private nativeStorage: NativeStorage) {
+  constructor(public api: ApiClient, public storage: Storage) {
 
   }
 
   public isAuthentificated() {
-    this.loadFromStorage();
+    if (!this.loaded_from_storage) {
+      this.loadFromStorage();
+      this.loaded_from_storage = true;
+    }
+    //this.loadFromStorage();
     return this.api_key !== null && this.user !== null;
   }
 
@@ -28,8 +32,11 @@ export class Globals {
       var tmp = new User();
       tmp.setData(data);
       this.user = tmp;
+      this.available_teams = [];
+      this.available_teams = this.user.teams;
     });
     this.api.getSites((data) => {
+      this.available_sites = [];
       data['data'].forEach((value, key) => {
         var tmp = new Site;
         tmp.setData(value);
@@ -38,11 +45,17 @@ export class Globals {
     });
   }
 
-  private loadFromStorage() {
+  public loadFromStorage() {
     if (this.api_key == null) {
-      this.nativeStorage.getItem('api_key')
+      this.storage.get('api_key')
         .then(
-          data => this.api_key = data,
+          (data) => {
+            if (data == undefined) {
+              this.api_key = null;
+            } else {
+              this.api_key = data;
+            }
+          },
           error => console.error(error)
         );
     }
@@ -50,11 +63,7 @@ export class Globals {
 
   public saveApiKey(api_key) {
     this.api_key = api_key;
-    this.nativeStorage.setItem('api_key', api_key)
-      .then(
-        () => console.log('Stored item!'),
-        error => console.error('Error storing item', error)
-      );
+    this.storage.set('api_key', api_key);
 
   }
 }

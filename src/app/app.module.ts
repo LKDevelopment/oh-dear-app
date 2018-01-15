@@ -21,7 +21,6 @@ import {ApiClient} from "../services/ApiClient";
 import {LoginModal} from "../pages/login/login";
 import {IonicStorageModule} from "@ionic/storage";
 import {SelectTeamModal} from "../pages/select-team/select-team";
-import {NativeStorage} from "@ionic-native/native-storage";
 
 @NgModule({
   declarations: [
@@ -60,8 +59,7 @@ import {NativeStorage} from "@ionic-native/native-storage";
     User,
     Site,
     Check,
-    ApiClient,
-    NativeStorage
+    ApiClient
   ]
 })
 export class AppModule {

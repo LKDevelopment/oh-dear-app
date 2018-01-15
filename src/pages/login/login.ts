@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {ModalController, NavController, ViewController} from 'ionic-angular';
 import {Globals} from "../../services/globals";
-import {ApiClient} from "../../services/ApiClient";
 import {SelectTeamModal} from "../select-team/select-team";
 
 @Component({

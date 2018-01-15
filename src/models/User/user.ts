@@ -29,6 +29,6 @@ export class User {
     this.name = data.name;
     this.email = data.email;
     this.photo_url = data.photo_url;
-    //this.teams = data.teams;
+    this.teams = data.teams['data'];
   }
 }
