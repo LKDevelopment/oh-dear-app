@@ -42,7 +42,7 @@ export class Site {
   public sort_url: string;
   public team_id: number;
   public latest_run_date: string;
-  public summerized_check_result: string;
+  public summarized_check_result: string;
   public created_at: string;
   public updated_at: string;
   public checks: Array<Check> = [];
@@ -61,7 +61,7 @@ export class Site {
     this.sort_url = data.sort_url;
     this.team_id = data.team_id;
     this.latest_run_date = data.latest_run_date;
-    this.summerized_check_result = data.summerized_check_result;
+    this.summarized_check_result = data.summarized_check_result;
     this.created_at = data.created_at;
     this.updated_at = data.updated_at;
     this.parseChecks(data.checks);

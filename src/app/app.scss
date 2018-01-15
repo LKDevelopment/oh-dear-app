@@ -98,6 +98,12 @@ ion-content{
       background-color: #b6de8b;
     }
   }
+  &.is-warned {
+    background-color:#F7EACF;
+    &:before {
+      background-color: #EDC678;
+    }
+  }
   &:before {
     background-color: #989898;
     height: 7.5px;

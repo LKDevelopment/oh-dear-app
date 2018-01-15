@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <div float-left="" style="color:#ffffff; font-size:24px;">Sites</div>
+    <div float-end="" style="color:#ffffff; font-size:16px;">
+
+      <img src="{{ globals.user.photo_url }}"
+           style="border-radius: 20px; height:25px;">
+      <span style="margin-top:-15px;">{{ globals.user.name }}</span>
+    </div>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="flex-1 w-3/4 xl:w-4/5">
+    <div class="w-full lg:w-1/2 px-4 mb-8 cloak-fade">
+      <article class="card p-4 h-full flex flex-col shadow shadow-mg">
+        <header class="mb-4 flex items-center justify-between"><h2 class="h1 mb-0 text-lg">
+          Uptime
+        </h2> <span class="check-result is-succeeded"
+                    [ngClass]="{'is-succeeded': site.uptime_check, 'is-failed': !site.uptime_check}">
+          {{ site.uptime_check ? 'Check is enabled' : 'Check is disabled'}}
+        </span></header>
+        <div class="flex-1 flex flex-col py-4 border-b border-t border-grey-lighter min-h-32">
+        </div>
+        <section class="mt-4 flex justify-between"><label class="text-sm"><input type="checkbox"
+                                                                                 class="check-toggle"></label>
+        </section>
+      </article>
+
+      <article class="card p-4 h-full flex flex-col  shadow shadow-mg">
+        <header class="mb-4 flex items-center justify-between"><h2 class="h1 mb-0 text-lg">
+          Mixed Content
+        </h2> <span class="check-result is-succeeded"
+                    [ngClass]="{'is-succeeded': site.mixed_content_check, 'is-failed': !site.mixed_content_check}">
+          {{ site.uptime_check ? 'Check is enabled' : 'Check is disabled'}}
+        </span></header>
+        <div class="flex-1 flex flex-col py-4 border-b border-t border-grey-lighter min-h-32">
+        </div>
+        <section class="mt-4 flex justify-between"><label class="text-sm"><input type="checkbox"
+                                                                                 class="check-toggle"></label>
+        </section>
+      </article>
+    </div>
+    <div class="w-full lg:w-1/2 px-4 mb-8 cloak-fade ">
+      <article class="card p-4 h-full flex flex-col  shadow shadow-mg">
+        <header class="mb-4 flex items-center justify-between"><h2 class="h1 mb-0 text-lg">
+          Certificate Health
+        </h2> <span class="check-result is-succeeded"
+                    [ngClass]="{'is-succeeded': site.certificate_health_check, 'is-failed': !site.certificate_health_check}">
+          {{ site.uptime_check ? 'Check is enabled' : 'Check is disabled'}}
+        </span></header>
+        <div class="flex-1 flex flex-col py-4 border-b border-t border-grey-lighter min-h-32">
+        </div>
+        <section class="mt-4 flex justify-between"><label class="text-sm"><input type="checkbox"
+                                                                                 class="check-toggle"></label>
+        </section>
+      </article>
+
+      <article class="card p-4 h-full flex flex-col  shadow shadow-mg">
+        <header class="mb-4 flex items-center justify-between"><h2 class="h1 mb-0 text-lg">
+          Certificate transparency
+        </h2> <span class="check-result is-succeeded"
+                    [ngClass]="{'is-succeeded': site.certificate_health_check, 'is-failed': !site.certificate_health_check}">
+          {{ site.uptime_check ? 'Check is enabled' : 'Check is disabled'}}
+        </span></header>
+        <div class="flex-1 flex flex-col py-4 border-b border-t border-grey-lighter min-h-32">
+        </div>
+        <section class="mt-4 flex justify-between"><label class="text-sm"><input type="checkbox"
+                                                                                 class="check-toggle"></label>
+        </section>
+      </article>
+    </div>
+  </div>
+</ion-content>

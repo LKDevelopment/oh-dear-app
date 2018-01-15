@@ -28,12 +28,12 @@ export class User {
     this.id = data.id;
     this.name = data.name;
     this.email = data.email;
-    this.photo_url = data.photoUrl;
+    this.photo_url = data.photo_url;
     this.parseTeams(data.teams);
   }
 
   public parseTeams(data) {
-    data.data.attributes.forEach((value, key) => {
+    data['data'].forEach((value, key) => {
       var tmp = new Team();
       tmp.setData(value);
       this.teams.push(tmp);

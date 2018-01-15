@@ -4,7 +4,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <div float-left="" style="color:#ffffff; font-size:24px;">Sites</div>
-    <div float-end=""  style="color:#ffffff; font-size:16px;">
+    <div float-end="" style="color:#ffffff; font-size:16px;">
 
       <img src="{{ globals.user.photo_url }}"
            style="border-radius: 20px; height:25px;">
@@ -18,20 +18,17 @@
     <div class="card pb-8 cloak-fade shadow shadow-mg">
       <table class="site-list-table w-full">
         <thead>
-        <th style="width: 25%;">Site</th>
-        <th style="width: 18%;">Uptime</th>
-        <th style="width: 18%;">Mixed Content</th>
-        <th style="width: 18%;">Certificate Health</th>
-        <th style="width: 13%;">Last check</th>
-        <th style="width: 8%;"></th>
+        <th style="width: 50%;">Site</th>
+        <th style="width: 25%;">Status</th>
+        <th style="width: 8%;">Last Run</th>
         </thead>
         <tbody>
-        <tr *ngFor="let item of items">
-          <td class="pr-2" style="width:25%;">{{ item.sort_url }}</td>
-          <td><span class="check-result" [ngClass]="{ 'is-succeeded' : item.uptime_check.enabled, 'is-failed': !item.uptime_check.enabled}">{{ item.uptime_check.enabled ? 'Is enabled': 'Is disabled'}}</span></td>
-          <td><span class="check-result" [ngClass]="{ 'is-succeeded' : item.mixed_content_check.enabled, 'is-failed': !item.mixed_content_check.enabled}">{{ item.mixed_content_check.enabled ? 'Is enabled': 'Is disabled'}}</span></td>
-          <td><span class="check-result" [ngClass]="{ 'is-succeeded' : item.certificate_health_check.enabled, 'is-failed': !item.certificate_health_check.enabled}">{{ item.certificate_health_check.enabled ? 'Is enabled': 'Is disabled'}}</span></td>
-          <td>{{ item.latest_run_date }}</td>
+        <tr *ngFor="let site of items" (click)="openSite(site)">
+          <td class="pr-2" style="width:25%;" >{{ site.sort_url }}</td>
+          <td class="pr-2"><span class="check-result"
+                                 [ngClass]="{ 'is-succeeded': site.summarized_check_result == 'succeeded', 'is-failed': site.summarized_check_result == 'failed', 'is-warned': site.summarized_check_result == 'warning'}">{{(site.summarized_check_result == 'succeeded' ? 'All good!' : (site.summarized_check_result == 'failed' ? 'Oh Dear!' : 'Please look!')) }}</span>
+          </td>
+          <td class="pr-2">{{ site.latest_run_date }}</td>
         </tr>
         </tbody>
       </table>

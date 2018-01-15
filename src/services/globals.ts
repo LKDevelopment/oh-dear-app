@@ -44,6 +44,7 @@ export class Globals {
         var tmp = new Site;
         tmp.setData(value);
         this.available_sites.push(tmp);
+        console.log(this.available_sites);
       });
     });
   }
