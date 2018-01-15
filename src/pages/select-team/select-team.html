@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Select your Team.
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-list>
+    <ion-item>
+      <ion-label>Your actuall Team:</ion-label>
+      <ion-select [(ngModel)]="selected_team">
+        <ion-option  v-for="let team of globals.available_teams" value="team">{{ team.name }}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <button class="button float-right" (click)="login()">Select</button>
+    </ion-item>
+  </ion-list>
+</ion-content>

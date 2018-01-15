@@ -1,5 +1,6 @@
 import {Check} from "./check";
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
+
 @Injectable()
 export class Site {
   /**
@@ -36,17 +37,58 @@ export class Site {
       ]
     }
    */
-  public id:number;
-  public url:string;
-  public sort_url:string;
-  public team_id:number;
-  public latest_run_date:string;
-  public summerized_check_result:string;
-  public created_at:string;
-  public updated_at:string;
-  public checks: Array<Check>;
+  public id: number;
+  public url: string;
+  public sort_url: string;
+  public team_id: number;
+  public latest_run_date: string;
+  public summerized_check_result: string;
+  public created_at: string;
+  public updated_at: string;
+  public checks: Array<Check> = [];
+  public uptime_check: Check;
+  public certificate_health_check: Check;
+  public mixed_content_check: Check;
+  public certificate_transparency_check: Check;
 
-  public delete(){
+
+  public constructor() {
+
+  }
+  public setData(data){
+    this.id = data.id;
+    this.url = data.url;
+    this.sort_url = data.sort_url;
+    this.team_id = data.team_id;
+    this.latest_run_date = data.latest_run_date;
+    this.summerized_check_result = data.summerized_check_result;
+    this.created_at = data.created_at;
+    this.updated_at = data.updated_at;
+    this.parseChecks(data.checks);
+    this.uptime_check = this.getCheck('uptime');
+    this.certificate_health_check = this.getCheck('certificate_health');
+    this.mixed_content_check = this.getCheck('mixed_content');
+    this.certificate_transparency_check = this.getCheck('certificate_transparency');
+  }
+  public delete() {
     // TODO
+  }
+
+  public getCheck(type: string) {
+    var tmp: Check = null;
+    this.checks.forEach((value, key) => {
+      if (value.type == type) {
+        tmp = value;
+      }
+    });
+    return tmp;
+  }
+
+  public parseChecks(data) {
+    data.forEach((value, key) => {
+     var tmp = new Check();
+      tmp.setData(value);
+      this.checks.push(tmp);
+    });
   }
 }

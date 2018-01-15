@@ -18,24 +18,33 @@ import {Check} from "../models/check";
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {TokenInterceptor} from '../services/http/TokenInterceptor';
 import {ApiClient} from "../services/ApiClient";
+import {LoginModal} from "../pages/login/login";
+import {IonicStorageModule} from "@ionic/storage";
+import {SelectTeamModal} from "../pages/select-team/select-team";
+import {NativeStorage} from "@ionic-native/native-storage";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    SitesPage
+    SitesPage,
+    LoginModal,
+    SelectTeamModal
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    IonicStorageModule.forRoot()
 
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    SitesPage
+    SitesPage,
+    LoginModal,
+    SelectTeamModal
   ],
   providers: [
     StatusBar,
@@ -51,7 +60,8 @@ import {ApiClient} from "../services/ApiClient";
     User,
     Site,
     Check,
-    ApiClient
+    ApiClient,
+    NativeStorage
   ]
 })
 export class AppModule {

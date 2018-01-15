@@ -22,10 +22,11 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-content>
-    <ion-item color="danger" menuClose="">
-      <<
+  <ion-content *ngIf="globals.isAuthentificated()">
+    <ion-item color="danger" menuClose="" (click)="selectTeamModal()">
+      << {{ globals.selected_team.name}}
     </ion-item>
+
     <ion-list *ngFor="let p of pages">
       <ion-item color="none" menuClose="" on-click="openPage(p)">
         {{p.title}}

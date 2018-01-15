@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Site} from "../models/site";
 
 @Injectable()
 export class ApiClient {
@@ -9,18 +8,20 @@ export class ApiClient {
 
   }
 
-  public getSites() {
-    var sites: Array<Site>;
-    this.client.get('https://ohdearapp.com/api/sites')
+  public getSites(callback) {
+    this.client.get('/api/sites')
       .subscribe(
-        (data) => {
-          data['data'].forEach(function (value, key) {
-            sites.push(value);
-          });
-        },
-        err => alert(err.error)
+        data => callback(data),
+        err => alert(err)
       );
-    return sites;
+  }
+
+  public getUser(callback) {
+    this.client.get('/api/me')
+      .subscribe(
+        data => callback(data),
+        err => alert(err)
+      );
   }
 }
 

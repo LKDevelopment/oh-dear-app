@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {Nav, Platform} from 'ionic-angular';
+import {ModalController, Nav, Platform} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 
@@ -7,6 +7,8 @@ import {HomePage} from '../pages/home/home';
 import {SitesPage} from '../pages/sites/sites';
 import {Globals} from "../services/globals";
 import {ApiClient} from "../services/ApiClient";
+import {LoginModal} from "../pages/login/login";
+import {SelectTeamModal} from "../pages/select-team/select-team";
 
 @Component({
   templateUrl: 'app.html'
@@ -18,7 +20,7 @@ export class MyApp {
 
   pages: Array<{ title: string, component: any, auth: boolean }>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public globals: Globals, public apiClient: ApiClient) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public globals: Globals, public modal: ModalController, public apiClient: ApiClient) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -33,8 +35,15 @@ export class MyApp {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      if (this.globals.isAuthentificated() == false) {
+        var login_modal = this.modal.create(LoginModal);
+        login_modal.present();
+      } else {
+
+      }
     });
   }
 
@@ -46,5 +55,10 @@ export class MyApp {
 
   isAuth(page) {
     return !page.auth;
+  }
+
+  selectTeamModal() {
+    let modal = this.modal.create(SelectTeamModal);
+    modal.present();
   }
 }

@@ -5,10 +5,11 @@
     </button>
     <div float-left="" style="color:#ffffff; font-size:24px;">Home</div>
 
-      <div float-end=""  style="color:#ffffff; font-size:16px;">
-        <img src="https://www.gravatar.com/avatar/a6ea861da34da94f52c08976e45772a5.jpg?s=200&d=mm"
+      <div float-end=""  style="color:#ffffff; font-size:16px;" *ngIf="globals.isAuthentificated()">
+
+        <img src="{{ globals.user.photo_url }}"
              style="border-radius: 20px; height:25px;">
-        <span style="margin-top:-15px;">Lukas Kämmerling</span>
+        <span style="margin-top:-15px;">{{ globals.user.name }}</span>
       </div>
 
 

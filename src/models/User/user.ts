@@ -1,5 +1,6 @@
 import {Team} from "./team";
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
+
 @Injectable()
 export class User {
   /**
@@ -21,5 +22,13 @@ export class User {
   public name: string;
   public email: string;
   public photo_url: string;
-  public teams: Array<Team>;
+  public teams: Array<Team> = [];
+
+  public setData(data) {
+    this.id = data.id;
+    this.name = data.name;
+    this.email = data.email;
+    this.photo_url = data.photo_url;
+    //this.teams = data.teams;
+  }
 }

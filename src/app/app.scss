@@ -1,6 +1,5 @@
 // http://ionicframework.com/docs/theming/
 
-
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
@@ -14,3 +13,108 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.button {
+  background-color: #e32929;
+  border-width: 2px;
+  border-color: transparent;
+  font-weight: 600;
+  display: inline-block;
+  padding-left: 11.25px;
+  padding: .5rem .75rem;
+  padding-right: 11.25px;
+  padding-top: 7.5px;
+  padding-bottom: 7.5px;
+  border-radius: .125rem;
+  color: #fff;
+  &.is-secondary {
+    background-color: transparent;
+    font-weight: 400;
+    padding: 0;
+    color: gray;
+    font-size: 13.125px;
+    font-size: .875rem;
+    text-decoration: underline;
+  }
+}
+
+.site-list-table {
+  border-bottom-width: 1px;
+  border-collapse: collapse;
+  table-layout: fixed;
+  & th {
+    text-transform: uppercase;
+    text-align: left;
+    font-size: 11.25px;
+    font-size: .75rem;
+    padding-top: 7.5px;
+    padding-top: .5rem;
+    padding-bottom: 7.5px;
+    padding-bottom: .5rem;
+    letter-spacing: .05em;
+    font-weight: 600;
+    color: #989898;
+  }
+  & td {
+    padding-top: 15px;
+    padding-top: 1rem;
+    padding-bottom: 15px;
+    padding-bottom: 1rem;
+    background-color: #fff;
+    border-top-width: 1px;
+  }
+}
+
+.card {
+  background-color: #fff;
+  border-top-width: 4px;
+  border-radius: .125rem;
+  padding-left: 30px;
+  padding: 2rem 2rem 1rem;
+  padding-right: 30px;
+  padding-top: 30px;
+  padding-bottom: 15px;
+  -webkit-box-shadow: 5px 5px 20px rgba(0, 0, 0, .03);
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, .03);
+}
+
+.check-result {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: .125rem;
+  padding: 4px 7px;
+  -webkit-transition: background-color .5s ease-out;
+  transition: background-color .5s ease-out;
+  &.is-succeeded {
+    background-color: #e4f7df;
+    &:before{
+      background-color: #b6de8b;
+    }
+  }
+  &.is-errored-or-timed-out, &.is-failed {
+    background-color: #f9dddd;
+    &:before{
+      background-color: #b6de8b;
+    }
+  }
+  &:before {
+    background-color: #989898;
+    height: 7.5px;
+    height: .5rem;
+    display: inline-block;
+    border-radius: 9999px;
+    width: 7.5px;
+    width: .5rem;
+    content: "";
+    margin-right: 5.625px;
+    margin-right: .375rem;
+    -webkit-transform: translateY(.03em);
+    transform: translateY(.03em);
+    -webkit-transition: background-color .8s ease-out;
+    transition: background-color .8s ease-out;
+  }
+}

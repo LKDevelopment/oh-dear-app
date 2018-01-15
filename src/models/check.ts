@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
+
 @Injectable()
 export class Check {
   /**
@@ -12,11 +13,19 @@ export class Check {
   public type: string;
   public enabled: boolean;
 
-  public enable(){
+  public constructor() {
+
+  }
+  public setData(data){
+    this.id = data.id;
+    this.type = data.type;
+    this.enabled = data.enabled;
+  }
+  public enable() {
     // TODO
   }
 
-  public disable(){
+  public disable() {
     // TODO
   }
 }
