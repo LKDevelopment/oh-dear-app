@@ -27,14 +27,12 @@ export class Globals {
     return this.api_key !== null && this.user !== null;
   }
 
-  public load() {
+  public load(callback_on_success) {
     this.api.getUser((data) => {
       var tmp = new User();
       tmp.setData(data);
       this.user = tmp;
       this.available_teams = [];
-      console.log(this.user.teams);
-
       this.available_teams = this.user.teams;
     });
 
@@ -44,9 +42,10 @@ export class Globals {
         var tmp = new Site;
         tmp.setData(value);
         this.available_sites.push(tmp);
-        console.log(this.available_sites);
+
       });
     });
+    callback_on_success();
   }
 
   public loadFromStorage() {
@@ -63,7 +62,7 @@ export class Globals {
           error => console.error(error)
         );
     }
-    if(this.selected_team == null){
+    if (this.selected_team == null) {
       this.storage.get('selected_team')
         .then(
           (data) => {
@@ -86,6 +85,6 @@ export class Globals {
   public saveApiKey(api_key) {
     this.api_key = api_key;
     this.storage.set('api_key', api_key);
-
   }
+
 }

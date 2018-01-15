@@ -18,20 +18,21 @@
     <div class="card pb-8 cloak-fade shadow shadow-mg">
       <table class="site-list-table w-full">
         <thead>
-        <th style="width: 50%;">Site</th>
+        <th style="width: 30%;">Site</th>
         <th style="width: 25%;">Status</th>
-        <th style="width: 8%;">Last Run</th>
+        <th style="width: 45%;">Last Run</th>
         </thead>
         <tbody>
-        <tr *ngFor="let site of items" (click)="openSite(site)">
-          <td class="pr-2" style="width:25%;" >{{ site.sort_url }}</td>
-          <td class="pr-2"><span class="check-result"
+        <tr *ngFor="let site of items" (click)="openSite(site)" >
+          <td class="pr-2" style="width:25%;" *ngIf="site.team_id == globals.selected_team.id">{{ site.sort_url }}</td>
+          <td class="pr-2" *ngIf="site.team_id == globals.selected_team.id"><span class="check-result"
                                  [ngClass]="{ 'is-succeeded': site.summarized_check_result == 'succeeded', 'is-failed': site.summarized_check_result == 'failed', 'is-warned': site.summarized_check_result == 'warning'}">{{(site.summarized_check_result == 'succeeded' ? 'All good!' : (site.summarized_check_result == 'failed' ? 'Oh Dear!' : 'Please look!')) }}</span>
           </td>
-          <td class="pr-2">{{ site.latest_run_date }}</td>
+          <td class="pr-2" *ngIf="site.team_id == globals.selected_team.id">{{ site.latest_run_date }}</td>
         </tr>
         </tbody>
       </table>
+      <button (click)="openAddAnotherPage()" class="mt-4">Add another Site?</button>
     </div>
   </div>
 </ion-content>

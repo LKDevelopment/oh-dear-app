@@ -23,6 +23,7 @@ import {IonicStorageModule} from "@ionic/storage";
 import {SelectTeamModal} from "../pages/select-team/select-team";
 import { Pro } from '@ionic/pro';
 import {SitePage} from "../pages/site/site";
+import {AddSiteModal} from "../pages/add-site/add-site";
 const IonicPro = Pro.init('33a002bd', {
   appVersion: "0.0.1"
 });
@@ -54,6 +55,7 @@ export class MyErrorHandler implements ErrorHandler {
     LoginModal,
     SelectTeamModal,
     SitePage,
+    AddSiteModal
   ],
   imports: [
     BrowserModule,
@@ -69,7 +71,8 @@ export class MyErrorHandler implements ErrorHandler {
     SitesPage,
     LoginModal,
     SelectTeamModal,
-    SitePage
+    SitePage,
+    AddSiteModal
   ],
   providers: [
     StatusBar,

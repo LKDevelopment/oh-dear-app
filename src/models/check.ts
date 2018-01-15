@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {ApiClient} from "../services/ApiClient";
 
 @Injectable()
 export class Check {
@@ -16,16 +17,22 @@ export class Check {
   public constructor() {
 
   }
-  public setData(data){
+
+  public setData(data) {
     this.id = data.id;
     this.type = data.type;
     this.enabled = data.enabled;
   }
-  public enable() {
-    // TODO
+
+  public enable(client: ApiClient) {
+    client.enableCheck(this,(data) => {
+      this.enabled = true;
+    })
   }
 
-  public disable() {
-    // TODO
+  public disable(client: ApiClient) {
+    client.disableCheck(this,(data) => {
+      this.enabled = false;
+    })
   }
 }

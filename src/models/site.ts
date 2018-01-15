@@ -86,7 +86,7 @@ export class Site {
 
   public parseChecks(data) {
     data.forEach((value, key) => {
-     var tmp = new Check();
+     var tmp = new Check;
       tmp.setData(value);
       this.checks.push(tmp);
     });

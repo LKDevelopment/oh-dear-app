@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Add another Site
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <p class="help m-2 p-3">Please enter an valid URL.</p>
+
+  <p class="help m-2 p-3" *ngIf="error != null">{{ error }}</p>
+  <ion-list>
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="url" placeholder="https://ohdearapp.com"></ion-input>
+    </ion-item>
+    <ion-item>
+      <button class="button float-right" (click)="add()">Add</button>
+    </ion-item>
+  </ion-list>
+</ion-content>

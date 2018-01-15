@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <div float-left="" style="color:#ffffff; font-size:24px;">Sites</div>
+    <div float-left="" style="color:#ffffff; font-size:24px;">{{ site.sort_url }}</div>
     <div float-end="" style="color:#ffffff; font-size:16px;">
 
       <img src="{{ globals.user.photo_url }}"
@@ -14,62 +14,66 @@
 </ion-header>
 
 <ion-content>
-  <div class="flex-1 w-3/4 xl:w-4/5">
-    <div class="w-full lg:w-1/2 px-4 mb-8 cloak-fade">
+  <div class="flex-1 m-4">
+    <div class="w-full px-4 mb-8 cloak-fade">
       <article class="card p-4 h-full flex flex-col shadow shadow-mg">
-        <header class="mb-4 flex items-center justify-between"><h2 class="h1 mb-0 text-lg">
+        <header class="mb-4 flex items-center justify-between"><h2 class="h1 mb-0 text-lg test-name">
           Uptime
         </h2> <span class="check-result is-succeeded"
-                    [ngClass]="{'is-succeeded': site.uptime_check, 'is-failed': !site.uptime_check}">
-          {{ site.uptime_check ? 'Check is enabled' : 'Check is disabled'}}
+                    [ngClass]="{'is-succeeded': site.uptime_check.enabled, 'is-disabled': !site.uptime_check.enabled}">
+          {{ site.uptime_check.enabled ? 'Check is enabled' : 'Disabled'}}
         </span></header>
-        <div class="flex-1 flex flex-col py-4 border-b border-t border-grey-lighter min-h-32">
-        </div>
-        <section class="mt-4 flex justify-between"><label class="text-sm"><input type="checkbox"
-                                                                                 class="check-toggle"></label>
-        </section>
-      </article>
-
-      <article class="card p-4 h-full flex flex-col  shadow shadow-mg">
-        <header class="mb-4 flex items-center justify-between"><h2 class="h1 mb-0 text-lg">
-          Mixed Content
-        </h2> <span class="check-result is-succeeded"
-                    [ngClass]="{'is-succeeded': site.mixed_content_check, 'is-failed': !site.mixed_content_check}">
-          {{ site.uptime_check ? 'Check is enabled' : 'Check is disabled'}}
-        </span></header>
-        <div class="flex-1 flex flex-col py-4 border-b border-t border-grey-lighter min-h-32">
-        </div>
-        <section class="mt-4 flex justify-between"><label class="text-sm"><input type="checkbox"
-                                                                                 class="check-toggle"></label>
+        <!--<div class="flex-1 flex flex-col py-4 border-b border-t border-grey-lighter min-h-32">
+        </div> -->
+        <section class="mt-4 flex justify-between">
+          <ion-toggle [checked]="site.uptime_check.enabled" (ionChange)="toggle('uptime')"></ion-toggle>
         </section>
       </article>
     </div>
-    <div class="w-full lg:w-1/2 px-4 mb-8 cloak-fade ">
+    <div class="w-full px-4 mb-8 cloak-fade ">
       <article class="card p-4 h-full flex flex-col  shadow shadow-mg">
-        <header class="mb-4 flex items-center justify-between"><h2 class="h1 mb-0 text-lg">
-          Certificate Health
+        <header class="mb-4 flex items-center justify-between"><h2 class="h1 mb-0 text-lg  test-name">
+          Mixed Content
         </h2> <span class="check-result is-succeeded"
-                    [ngClass]="{'is-succeeded': site.certificate_health_check, 'is-failed': !site.certificate_health_check}">
-          {{ site.uptime_check ? 'Check is enabled' : 'Check is disabled'}}
+                    [ngClass]="{'is-succeeded': site.mixed_content_check.enabled, 'is-disabled': !site.mixed_content_check.enabled}">
+          {{ site.mixed_content_check.enabled ? 'Check is enabled' : 'Disabled'}}
         </span></header>
-        <div class="flex-1 flex flex-col py-4 border-b border-t border-grey-lighter min-h-32">
-        </div>
-        <section class="mt-4 flex justify-between"><label class="text-sm"><input type="checkbox"
-                                                                                 class="check-toggle"></label>
+        <!--<div class="flex-1 flex flex-col py-4 border-b border-t border-grey-lighter min-h-32">
+        </div> -->
+        <section class="mt-4 flex justify-between">
+          <ion-toggle [checked]="site.mixed_content_check.enabled" (ionChange)="toggle('mixed_content')"></ion-toggle>
         </section>
       </article>
-
+    </div>
+    <div class="w-full px-4 mb-8 cloak-fade ">
       <article class="card p-4 h-full flex flex-col  shadow shadow-mg">
-        <header class="mb-4 flex items-center justify-between"><h2 class="h1 mb-0 text-lg">
+        <header class="mb-4 flex items-center justify-between"><h2 class="h1 mb-0 text-lg  test-name">
+          Certificate Health
+        </h2> <span class="check-result is-succeeded"
+                    [ngClass]="{'is-succeeded': site.certificate_health_check.enabled, 'is-disabled': !site.certificate_health_check.enabled}">
+          {{ site.certificate_health_check.enabled ? 'Check is enabled' : 'Disabled'}}
+        </span></header>
+        <!-- <div class="flex-1 flex flex-col py-4 border-b border-t border-grey-lighter min-h-32">
+         </div> -->
+        <section class="mt-4 flex justify-between">
+          <ion-toggle [checked]="site.certificate_health_check.enabled"
+                      (ionChange)="toggle('certificate_health')"></ion-toggle>
+        </section>
+      </article>
+    </div>
+    <div class="w-full px-4 mb-8 cloak-fade ">
+      <article class="card p-4 h-full flex flex-col  shadow shadow-mg">
+        <header class="mb-4 flex items-center justify-between"><h2 class="h1 mb-0 text-lg  test-name">
           Certificate transparency
         </h2> <span class="check-result is-succeeded"
-                    [ngClass]="{'is-succeeded': site.certificate_health_check, 'is-failed': !site.certificate_health_check}">
-          {{ site.uptime_check ? 'Check is enabled' : 'Check is disabled'}}
-        </span></header>
-        <div class="flex-1 flex flex-col py-4 border-b border-t border-grey-lighter min-h-32">
-        </div>
-        <section class="mt-4 flex justify-between"><label class="text-sm"><input type="checkbox"
-                                                                                 class="check-toggle"></label>
+                    [ngClass]="{'is-succeeded': site.certificate_transparency_check.enabled, 'is-disabled': !site.certificate_transparency_check.enabled}">
+           {{ site.certificate_transparency_check.enabled ? 'Check is enabled' : 'Disabled'}}
+         </span></header>
+        <!-- <div class="flex-1 flex flex-col py-4 border-b border-t border-grey-lighter min-h-32">
+         </div> -->
+        <section class="mt-4 flex justify-between">
+          <ion-toggle [checked]="site.certificate_transparency_check.enabled"
+                      (ionChange)="toggle('certificate_transparency')"></ion-toggle>
         </section>
       </article>
     </div>
