@@ -3,7 +3,13 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Sites</ion-title>
+    <div float-left="" style="color:#ffffff; font-size:24px;">Sites</div>
+    <div float-end=""  style="color:#ffffff; font-size:16px;">
+
+      <img src="{{ globals.user.photo_url }}"
+           style="border-radius: 20px; height:25px;">
+      <span style="margin-top:-15px;">{{ globals.user.name }}</span>
+    </div>
   </ion-navbar>
 </ion-header>
 
