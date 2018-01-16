@@ -1,8 +1,8 @@
 {
-  "name": "oh-dear-app",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "name": "de.lkdevelopment.ohdearapp",
+  "version": "de.lkdevelopment.ohdearapp",
+  "author": "Lukas Kämmerling",
+  "homepage": "http://lukas-kaemmerling.de/",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
