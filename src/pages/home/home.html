@@ -5,23 +5,28 @@
     </button>
     <div float-left="" style="color:#ffffff; font-size:24px;">Home</div>
 
-      <div float-end=""  style="color:#ffffff; font-size:16px;" *ngIf="globals.isAuthentificated()">
+    <div float-end="" style="color:#ffffff; font-size:16px;" *ngIf="globals.isAuthentificated()">
 
-        <img src="{{ globals.user.photo_url }}"
-             style="border-radius: 20px; height:25px;">
-        <span style="margin-top:-15px;">{{ globals.user.name }}</span>
-      </div>
+      <img src="{{ globals.user.photo_url }}"
+           style="border-radius: 20px; height:25px;">
+      <span style="margin-top:-15px;">{{ globals.user.name }}</span>
+    </div>
 
 
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+  <h3>Oh-Dear-App [Alpha]</h3>
 
   <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
+    Thank you for downloading the Oh-Dear-App. Actually the App isn't stable, so it is actually an alpha and not really
+    feature rich.
   </p>
-
+  <p class="help p-2">
+    Because of an cors limitation of the actual Oh-Dear-App-Api, we needed to proxy all calls to the api. The connection
+    to our proxy is HTTPS and you can find the source Code at <a
+    href="https://github.com/LKDevelopment/oh-dear-app-proxy">Github</a>.
+  </p>
   <button ion-button secondary menuToggle>Toggle Menu</button>
 </ion-content>

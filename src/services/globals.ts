@@ -57,6 +57,8 @@ export class Globals {
               this.api_key = null;
             } else {
               this.api_key = data;
+              this.load(() => {
+              });
             }
           },
           error => console.error(error)
@@ -75,6 +77,7 @@ export class Globals {
           error => console.error(error)
         );
     }
+
   }
 
   public setSelectedTeam(team: Team) {

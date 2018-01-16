@@ -37,13 +37,13 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
 
       this.statusBar.styleDefault();
-      this.splashScreen.hide();
       if (this.globals.isAuthentificated() == false) {
         var login_modal = this.modal.create(LoginModal);
         login_modal.present();
       } else {
 
       }
+      this.splashScreen.hide();
     });
   }
 
