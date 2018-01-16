@@ -41,7 +41,7 @@ export class MyApp {
       if (this.storage.ready()) {
         this.globals.loadFromStorage();
         if (this.globals.isAuthentificated() == false) {
-          if (this.globals.api_key != null) {
+          if (this.globals.api_key == null) {
             var login_modal = this.modal.create(LoginModal);
             login_modal.present();
           } else if (this.globals.selected_team.id == 0) {
