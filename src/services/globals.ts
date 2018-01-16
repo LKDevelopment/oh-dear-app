@@ -69,7 +69,7 @@ export class Globals {
         .then(
           (data) => {
             if (data == undefined) {
-              this.selected_team = null;
+              this.selected_team = new Team();
             } else {
               this.selected_team = data;
             }
