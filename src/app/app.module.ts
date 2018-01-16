@@ -25,7 +25,7 @@ import {AddSiteModal} from "../pages/add-site/add-site";
 import {MomentModule} from "angular2-moment";
 import {LogoutModal} from "../pages/logout/logout";
 const IonicPro = Pro.init('33a002bd', {
-  appVersion: "0.0.1"
+  appVersion: "0.0.3"
 });
 @Injectable()
 export class MyErrorHandler implements ErrorHandler {
