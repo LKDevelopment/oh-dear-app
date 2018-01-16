@@ -1,6 +1,5 @@
 import {Check} from "./check";
 import {Injectable} from '@angular/core';
-import {SitesPage} from "../pages/sites/sites";
 import {ApiClient} from "../services/ApiClient";
 import {Globals} from "../services/globals";
 
