@@ -24,7 +24,10 @@ export class AddSiteModal {
       this.globals.load(() => {
         this.viewCtrl.dismiss();
         spinner.dismiss();
-        this.navCtrl.setRoot(SitesPage);
+        this.globals.load(() => {
+          this.navCtrl.setRoot(SitesPage);
+        });
+
       });
     }, (error) => {
       if (error.error instanceof Error) {

@@ -11,10 +11,23 @@ import {AddSiteModal} from "../add-site/add-site";
 })
 export class SitesPage {
   items: Array<Site>;
-
   constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, public navParams: NavParams, public globals: Globals, public modalCtrl: ModalController) {
     // If we navigated to this page, we will have an item available as a nav param
     this.items = globals.available_sites;
+  }
+
+  getSites(ev: any) {
+    // set val to the value of the searchbar
+    let val = ev.target.value;
+    this.items = this.globals.available_sites;
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.items = this.items.filter((item) => {
+        return (item.sort_url.toLowerCase().indexOf(val.toLowerCase()) > -1) && item.team_id == this.globals.selected_team.id;
+      })
+    } else {
+
+    }
   }
 
   openSite(site) {

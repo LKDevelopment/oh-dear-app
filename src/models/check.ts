@@ -14,7 +14,6 @@ export class Check {
   public id: number;
   public type: string;
   public enabled: boolean;
-  public globals: Globals;
   public constructor() {
 
   }
@@ -25,14 +24,14 @@ export class Check {
     this.enabled = data.enabled;
   }
 
-  public enable(client: ApiClient) {
-    client.enableCheck(this.globals.api_key, this, (data) => {
+  public enable(client: ApiClient, globals:Globals) {
+    client.enableCheck(globals.api_key, this, (data) => {
       this.enabled = true;
     })
   }
 
-  public disable(client: ApiClient) {
-    client.disableCheck(this.globals.api_key, this, (data) => {
+  public disable(client: ApiClient, globals:Globals) {
+    client.disableCheck(globals.api_key, this, (data) => {
       this.enabled = false;
     })
   }

@@ -14,7 +14,9 @@
 </ion-header>
 
 <ion-content>
+  <ion-searchbar (ionInput)="getSites($event)"></ion-searchbar>
   <div class="m-4">
+
     <div class="card pb-8 cloak-fade shadow shadow-mg">
       <div class="float-right">
         <ion-icon name="refresh" (click)="reloadData()"></ion-icon>
@@ -37,7 +39,7 @@
         </tr>
         </tbody>
       </table>
-      <button (click)="openAddAnotherPage()" class="mt-4 button is-secondary">Add another Site?</button>
+      <button (click)="openAddAnotherPage()" class="mt-4 oh-dear-button is-secondary">Add another Site?</button>
     </div>
   </div>
 </ion-content>
