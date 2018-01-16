@@ -6,7 +6,7 @@ import {SplashScreen} from '@ionic-native/splash-screen';
 import {HomePage} from '../pages/home/home';
 import {SitesPage} from '../pages/sites/sites';
 import {Globals} from "../services/globals";
-import {ApiClient} from "../services/ApiClient";
+import {Storage} from "@ionic/storage";
 import {LoginModal} from "../pages/login/login";
 import {SelectTeamModal} from "../pages/select-team/select-team";
 
@@ -20,7 +20,7 @@ export class MyApp {
 
   pages: Array<{ title: string, component: any, auth: boolean }>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public globals: Globals, public modal: ModalController, public apiClient: ApiClient) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public globals: Globals, public modal: ModalController, public storage: Storage) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -37,13 +37,23 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
 
       this.statusBar.styleDefault();
-      if (this.globals.isAuthentificated() == false) {
-        var login_modal = this.modal.create(LoginModal);
-        login_modal.present();
-      } else {
+      if (this.storage.ready()) {
+        this.globals.loadFromStorage();
+        if (this.globals.isAuthentificated() == false) {
+          if (this.globals.api_key != null) {
+            var login_modal = this.modal.create(LoginModal);
+            login_modal.present();
+          }else if (this.globals.selected_team.id == 0) {
+            var select_team_modal = this.modal.create(SelectTeamModal);
+            select_team_modal.present()
+          }
+        } else {
 
+        }
+        this.splashScreen.hide();
       }
-      this.splashScreen.hide();
+
+
     });
   }
 

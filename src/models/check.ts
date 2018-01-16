@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ApiClient} from "../services/ApiClient";
+import {Globals} from "../services/globals";
 
 @Injectable()
 export class Check {
@@ -13,7 +14,7 @@ export class Check {
   public id: number;
   public type: string;
   public enabled: boolean;
-
+  public globals: Globals;
   public constructor() {
 
   }
@@ -25,13 +26,13 @@ export class Check {
   }
 
   public enable(client: ApiClient) {
-    client.enableCheck(this,(data) => {
+    client.enableCheck(this.globals.api_key, this, (data) => {
       this.enabled = true;
     })
   }
 
   public disable(client: ApiClient) {
-    client.disableCheck(this,(data) => {
+    client.disableCheck(this.globals.api_key, this, (data) => {
       this.enabled = false;
     })
   }

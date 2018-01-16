@@ -16,7 +16,6 @@ import {Site} from "../models/site";
 import {Check} from "../models/check";
 
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
-import {TokenInterceptor} from '../services/http/TokenInterceptor';
 import {ApiClient} from "../services/ApiClient";
 import {LoginModal} from "../pages/login/login";
 import {IonicStorageModule} from "@ionic/storage";
@@ -79,11 +78,6 @@ export class MyErrorHandler implements ErrorHandler {
     StatusBar,
     SplashScreen,
     [{ provide: ErrorHandler, useClass: MyErrorHandler }],
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true
-    },
     Globals,
     Team,
     User,

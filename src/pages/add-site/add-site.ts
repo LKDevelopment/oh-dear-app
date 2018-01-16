@@ -20,7 +20,7 @@ export class AddSiteModal {
     this.error = null;
     let spinner = this.loadingCtrl.create();
     spinner.present();
-    this.client.addSite(this.globals.selected_team, this.url, (data) => {
+    this.client.addSite(this.globals.api_key,this.globals.selected_team, this.url, (data) => {
       this.globals.load(() => {
         this.viewCtrl.dismiss();
         spinner.dismiss();

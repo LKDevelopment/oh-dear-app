@@ -28,7 +28,7 @@ export class Globals {
   }
 
   public load(callback_on_success) {
-    this.api.getUser((data) => {
+    this.api.getUser(this.api_key,(data) => {
       var tmp = new User();
       tmp.setData(data);
       this.user = tmp;
@@ -36,7 +36,7 @@ export class Globals {
       this.available_teams = this.user.teams;
     });
 
-    this.api.getSites((data) => {
+    this.api.getSites(this.api_key,(data) => {
       this.available_sites = [];
       data['data'].forEach((value, key) => {
         var tmp = new Site;
