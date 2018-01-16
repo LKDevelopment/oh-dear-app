@@ -16,6 +16,9 @@
 <ion-content>
   <div class="m-4">
     <div class="card pb-8 cloak-fade shadow shadow-mg">
+      <div class="float-right">
+        <ion-icon name="refresh" (click)="reloadData()"></ion-icon>
+      </div>
       <table class="site-list-table w-full">
         <thead>
         <th style="width: 40%;">Site</th>
@@ -34,7 +37,7 @@
         </tr>
         </tbody>
       </table>
-      <button (click)="openAddAnotherPage()" class="mt-4">Add another Site?</button>
+      <button (click)="openAddAnotherPage()" class="mt-4 button is-secondary">Add another Site?</button>
     </div>
   </div>
 </ion-content>

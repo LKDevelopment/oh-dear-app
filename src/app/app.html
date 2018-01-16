@@ -27,9 +27,12 @@
       << {{ globals.selected_team.name}}
     </ion-item>
 
-    <ion-list *ngFor="let p of pages">
-      <ion-item color="none" menuClose="" on-click="openPage(p)">
+    <ion-list >
+      <ion-item color="none" menuClose="" on-click="openPage(p)" *ngFor="let p of pages">
         {{p.title}}
+      </ion-item>
+      <ion-item color="none" menuClose="" on-click="logoutModal()">
+        Logout
       </ion-item>
     </ion-list>
   </ion-content>

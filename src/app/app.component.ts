@@ -9,6 +9,7 @@ import {Globals} from "../services/globals";
 import {Storage} from "@ionic/storage";
 import {LoginModal} from "../pages/login/login";
 import {SelectTeamModal} from "../pages/select-team/select-team";
+import {LogoutModal} from "../pages/logout/logout";
 
 @Component({
   templateUrl: 'app.html'
@@ -43,7 +44,7 @@ export class MyApp {
           if (this.globals.api_key != null) {
             var login_modal = this.modal.create(LoginModal);
             login_modal.present();
-          }else if (this.globals.selected_team.id == 0) {
+          } else if (this.globals.selected_team.id == 0) {
             var select_team_modal = this.modal.create(SelectTeamModal);
             select_team_modal.present()
           }
@@ -69,6 +70,11 @@ export class MyApp {
 
   selectTeamModal() {
     let modal = this.modal.create(SelectTeamModal);
+    modal.present();
+  }
+
+  logoutModal() {
+    let modal = this.modal.create(LogoutModal);
     modal.present();
   }
 }

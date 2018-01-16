@@ -64,7 +64,7 @@ export class Globals {
           error => console.error(error)
         );
     }
-    if (this.selected_team == null) {
+    if (this.selected_team.id == 0) {
       this.storage.get('selected_team')
         .then(
           (data) => {
