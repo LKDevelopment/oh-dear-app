@@ -77,7 +77,6 @@ ion-content {
   border-top-width: 4px;
   border-radius: .125rem;
   padding-left: 30px;
-  padding: 2rem 2rem 1rem;
   padding-right: 30px;
   padding-top: 30px;
   padding-bottom: 15px;
@@ -108,7 +107,7 @@ ion-content {
   &.is-errored-or-timed-out, &.is-failed {
     background-color: #f9dddd;
     &:before {
-      background-color: #b6de8b;
+      background-color: #e32929;
     }
   }
   &.is-warned {
@@ -120,14 +119,11 @@ ion-content {
   &:before {
     background-color: #989898;
     height: 7.5px;
-    height: .5rem;
     display: inline-block;
     border-radius: 9999px;
     width: 7.5px;
-    width: .5rem;
     content: "";
     margin-right: 5.625px;
-    margin-right: .375rem;
     -webkit-transform: translateY(.03em);
     transform: translateY(.03em);
     -webkit-transition: background-color .8s ease-out;
@@ -136,11 +132,17 @@ ion-content {
 }
 
 .help {
-  background-color: #ebf3fd;
+   background-color: #ebf3fd;
+   margin-bottom: 7.5px;
+   padding-left: 7.5px;
+   padding-right: 7.5px;
+   padding-top: 3.75px;
+   padding-bottom: 3.75px;
+ }
+.error {
+  background-color: #f9dddd;
   margin-bottom: 7.5px;
-  margin-bottom: .5rem;
   padding-left: 7.5px;
-  padding: .25rem .5rem;
   padding-right: 7.5px;
   padding-top: 3.75px;
   padding-bottom: 3.75px;

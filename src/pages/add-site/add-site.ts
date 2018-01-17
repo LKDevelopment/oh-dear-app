@@ -13,22 +13,30 @@ export class AddSiteModal {
   public error: string = null;
 
   constructor(public navCtrl: NavController, public viewCtrl: ViewController, public globals: Globals, public modalCtrl: ModalController, public loadingCtrl: LoadingController, public client: ApiClient) {
-
+    this.error = null;
   }
-
+  close(){
+    this.error = null;
+    this.viewCtrl.dismiss();
+  }
   add() {
     this.error = null;
     let spinner = this.loadingCtrl.create();
     spinner.present();
     this.client.addSite(this.globals.api_key, this.globals.selected_team, this.url, (data) => {
-      this.globals.load(() => {
-        this.viewCtrl.dismiss();
+      if (data['message'] != undefined) {
         spinner.dismiss();
+        this.error = data['message'];
+      } else {
         this.globals.load(() => {
-          this.navCtrl.setRoot(SitesPage);
-        });
+          this.viewCtrl.dismiss();
+          spinner.dismiss();
+          this.globals.load(() => {
+            this.navCtrl.setRoot(SitesPage);
+          });
 
-      });
+        });
+      }
     }, (error) => {
       if (error.error instanceof Error) {
         // A client-side or network error occurred. Handle it accordingly.

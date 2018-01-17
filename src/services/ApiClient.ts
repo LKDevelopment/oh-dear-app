@@ -16,8 +16,7 @@ export class ApiClient {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + api_key).set('Accept', 'application/json'),
     })
       .subscribe(
-        data => callback(data),
-        err => alert(err)
+        data => callback(data)
       );
   }
 
@@ -26,8 +25,7 @@ export class ApiClient {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + api_key).set('Accept', 'application/json'),
     })
       .subscribe(
-        data => callback(data),
-        err => alert(err)
+        data => callback(data)
       );
   }
 
@@ -36,8 +34,7 @@ export class ApiClient {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + api_key).set('Accept', 'application/json'),
     })
       .subscribe(
-        data => callback(data),
-        err => alert(err)
+        data => callback(data)
       );
   }
 
@@ -46,8 +43,7 @@ export class ApiClient {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + api_key).set('Accept', 'application/json'),
     })
       .subscribe(
-        data => callback(data),
-        err => alert(err)
+        data => callback(data)
       );
   }
 

@@ -13,6 +13,7 @@ export class Globals {
   public loaded_from_storage: boolean = false;
   public available_teams: Array<Team> = [];
   public available_sites: Array<Site> = [];
+  public app_version: string = 'DEV BUILD';
 
   constructor(public api: ApiClient, public storage: Storage) {
 
@@ -20,7 +21,8 @@ export class Globals {
 
   public isAuthentificated() {
     if (!this.loaded_from_storage) {
-      this.loadFromStorage();
+      this.loadFromStorage(() => {
+      });
       this.loaded_from_storage = true;
     }
     //this.loadFromStorage();
@@ -28,27 +30,27 @@ export class Globals {
   }
 
   public load(callback_on_success) {
-    this.api.getUser(this.api_key,(data) => {
+    this.api.getUser(this.api_key, (data) => {
       var tmp = new User();
       tmp.setData(data);
       this.user = tmp;
       this.available_teams = [];
       this.available_teams = this.user.teams;
     });
-
-    this.api.getSites(this.api_key,(data) => {
+    this.api.getSites(this.api_key, (_data) => {
       this.available_sites = [];
-      data['data'].forEach((value, key) => {
-        var tmp = new Site;
-        tmp.setData(value);
-        this.available_sites.push(tmp);
-
-      });
+      if (_data != undefined && _data['data'] != undefined) {
+        _data['data'].forEach((value, key) => {
+          var tmp = new Site;
+          tmp.setData(value);
+          this.available_sites.push(tmp);
+        });
+      }
     });
     callback_on_success();
   }
 
-  public loadFromStorage() {
+  public loadFromStorage(callback) {
     if (this.api_key == null) {
       this.storage.get('api_key')
         .then(
@@ -59,12 +61,26 @@ export class Globals {
               this.api_key = data;
               this.load(() => {
               });
+              if (this.selected_team.id == 0) {
+                this.storage.get('selected_team')
+                  .then(
+                    (data) => {
+                      if (data == undefined) {
+                        this.selected_team = new Team();
+                      } else {
+                        this.selected_team = data;
+                      }
+                      callback();
+                    },
+                    error => console.error(error)
+                  );
+              }
             }
           },
           error => console.error(error)
         );
     }
-    if (this.selected_team.id == 0) {
+    /*if (this.selected_team.id == 0) {
       this.storage.get('selected_team')
         .then(
           (data) => {
@@ -76,7 +92,7 @@ export class Globals {
           },
           error => console.error(error)
         );
-    }
+    } */
 
   }
 

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="de.lkdevelopment.ohdearapp" version="0.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>de.lkdevelopment.ohdearapp</name>
+<widget id="de.lkdevelopment.ohdearapp" version="0.0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>OhDearApp</name>
     <description>A mobile Client app for the OhDearApp</description>
     <author email="kontakt@lukas-kaemmerling.de" href="http://lukas-kaemmerling.de.de/">Lukas Kämmerling</author>
     <content src="index.html" />
@@ -91,4 +91,6 @@
     </plugin>
     <engine name="android" spec="~6.4.0" />
     <engine name="ios" spec="~4.5.4" />
+    <plugin name="cordova-plugin-network-information" spec="^2.0.1" />
+    <plugin name="cordova-plugin-app-version" spec="^0.1.9" />
 </widget>
