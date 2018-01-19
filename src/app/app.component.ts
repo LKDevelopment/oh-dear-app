@@ -38,8 +38,8 @@ export class MyApp {
   initializeApp() {
     this.platform.ready().then(() => {
       // watch network for a disconnect
-      let disconnectSubscription = this.network.onDisconnect().subscribe(() => {
-        this.modal.create(ErrorModal, {error: 'You loose your Internet Connectivity'}).present();
+      this.network.onDisconnect().subscribe(() => {
+        this.modal.create(ErrorModal).present();
       });
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
