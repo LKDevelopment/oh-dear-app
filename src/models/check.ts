@@ -14,9 +14,6 @@ export class Check {
   public id: number;
   public type: string;
   public enabled: boolean;
-  public constructor() {
-
-  }
 
   public setData(data) {
     this.id = data.id;

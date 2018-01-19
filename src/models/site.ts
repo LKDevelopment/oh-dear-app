@@ -54,10 +54,6 @@ export class Site {
   public certificate_transparency_check: Check;
 
 
-  public constructor() {
-
-  }
-
   public setData(data) {
     this.id = data.id;
     this.url = data.url;
