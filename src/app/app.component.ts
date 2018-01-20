@@ -77,4 +77,8 @@ export class MyApp {
     let modal = this.modal.create(LogoutModal);
     modal.present();
   }
+
+  loginInPage() {
+    this.modal.create(LoginModal).present();
+  }
 }
