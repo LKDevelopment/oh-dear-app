@@ -36,16 +36,15 @@
       </ion-item>
       <ion-item style="position: fixed; bottom:0; text-align: center">Version: {{ globals.app_version }}</ion-item>
     </ion-list>
-    <ion-content *ngIf="!globals.isAuthentificated()">
-
-      <ion-list >
-        <ion-item color="none" menuClose="" on-click="loginInPage()">
-          Login
-        </ion-item>
-      </ion-list>
-    </ion-content>
   </ion-content>
+  <ion-content *ngIf="!globals.isAuthentificated()">
 
+    <ion-list >
+      <ion-item color="none" menuClose="" on-click="loginInPage()">
+        Login
+      </ion-item>
+    </ion-list>
+  </ion-content>
 </ion-menu>
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
