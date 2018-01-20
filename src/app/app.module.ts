@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {ErrorHandler, Injectable, Injector, NgModule} from '@angular/core';
-import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
+import {IonicApp, IonicErrorHandler, IonicModule, ModalController} from 'ionic-angular';
 
 import {MyApp} from './app.component';
 import {HomePage} from '../pages/home/home';
@@ -19,22 +19,27 @@ import {ApiClient} from "../services/ApiClient";
 import {LoginModal} from "../pages/login/login";
 import {IonicStorageModule} from "@ionic/storage";
 import {SelectTeamModal} from "../pages/select-team/select-team";
-import { Pro } from '@ionic/pro';
+import {Pro} from '@ionic/pro';
 import {SitePage} from "../pages/site/site";
 import {AddSiteModal} from "../pages/add-site/add-site";
 import {MomentModule} from "angular2-moment";
 import {LogoutModal} from "../pages/logout/logout";
+import {ErrorModal} from "../pages/error/error";
+import {Network} from "@ionic-native/network";
+import {AppVersion} from "@ionic-native/app-version";
+
 const IonicPro = Pro.init('33a002bd', {
-  appVersion: "0.0.1"
+  appVersion: "0.0.3"
 });
+
 @Injectable()
 export class MyErrorHandler implements ErrorHandler {
   ionicErrorHandler: IonicErrorHandler;
 
-  constructor(injector: Injector) {
+  constructor(injector: Injector,public modal: ModalController) {
     try {
       this.ionicErrorHandler = injector.get(IonicErrorHandler);
-    } catch(e) {
+    } catch (e) {
       // Unable to get the IonicErrorHandler provider, ensure
       // IonicErrorHandler has been added to the providers list below
     }
@@ -45,8 +50,10 @@ export class MyErrorHandler implements ErrorHandler {
     // Remove this if you want to disable Ionic's auto exception handling
     // in development mode.
     this.ionicErrorHandler && this.ionicErrorHandler.handleError(err);
+    this.modal.create(ErrorModal).present();
   }
 }
+
 @NgModule({
   declarations: [
     MyApp,
@@ -56,7 +63,8 @@ export class MyErrorHandler implements ErrorHandler {
     SelectTeamModal,
     SitePage,
     AddSiteModal,
-    LogoutModal
+    LogoutModal,
+    ErrorModal
   ],
   imports: [
     BrowserModule,
@@ -74,12 +82,15 @@ export class MyErrorHandler implements ErrorHandler {
     SelectTeamModal,
     SitePage,
     AddSiteModal,
-    LogoutModal
+    LogoutModal,
+    ErrorModal
   ],
   providers: [
+    Network,
     StatusBar,
     SplashScreen,
-    [{ provide: ErrorHandler, useClass: MyErrorHandler }],
+    AppVersion,
+    [{provide: ErrorHandler, useClass: MyErrorHandler}],
     Globals,
     Team,
     User,

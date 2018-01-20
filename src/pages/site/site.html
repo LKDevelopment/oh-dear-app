@@ -15,8 +15,9 @@
 
 <ion-content>
   <div class="flex-1 m-4">
-    <span class="help p-5">Because of an limitiation of the official Oh-Dear-App-Api you can actually only de/enable Checks.</span>
-    <div class="w-full px-4 mb-8 cloak-fade">
+    <p class="help p-5 mb-8">Because of an limitiation of the official Oh-Dear-App-Api you can actually only de/enable
+      Checks and delete your Sites.</p>
+    <div class="w-full px-4 mb-8 cloak-fade mt-3">
       <article class="card p-4 h-full flex flex-col shadow shadow-mg">
         <header class="mb-4 flex items-center justify-between"><h2 class="h1 mb-0 text-lg test-name">
           Uptime
@@ -75,6 +76,21 @@
         <section class="mt-4 flex justify-between">
           <ion-toggle [checked]="site.certificate_transparency_check.enabled"
                       (ionChange)="toggle('certificate_transparency')"></ion-toggle>
+        </section>
+      </article>
+    </div>
+    <div class="flex-1 flex flex-col py-4 border-b border-t border-grey-lighter min-h-32">
+    </div>
+    <div class="w-full px-4 mb-8 cloak-fade">
+      <article class="card p-4 h-full flex flex-col shadow shadow-mg border-red-dark">
+        <header class="mb-4 flex items-center justify-between"><h2 class="h1 mb-0 text-lg  test-name">
+          DANGER ZONE
+        </h2></header>
+        <!-- <div class="flex-1 flex flex-col py-4 border-b border-t border-grey-lighter min-h-32">
+         </div> -->
+        <section class="mt-4 flex justify-between">
+          <button (click)="deleteSite()" class="oh-dear-button is-danger">Stop monitoring and delete all history
+          </button>
         </section>
       </article>
     </div>

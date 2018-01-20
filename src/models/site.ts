@@ -1,5 +1,7 @@
 import {Check} from "./check";
 import {Injectable} from '@angular/core';
+import {ApiClient} from "../services/ApiClient";
+import {Globals} from "../services/globals";
 
 @Injectable()
 export class Site {
@@ -52,10 +54,7 @@ export class Site {
   public certificate_transparency_check: Check;
 
 
-  public constructor() {
-
-  }
-  public setData(data){
+  public setData(data) {
     this.id = data.id;
     this.url = data.url;
     this.sort_url = data.sort_url;
@@ -70,8 +69,12 @@ export class Site {
     this.mixed_content_check = this.getCheck('mixed_content');
     this.certificate_transparency_check = this.getCheck('certificate_transparency');
   }
-  public delete() {
-    // TODO
+
+  public delete(client: ApiClient, globals: Globals) {
+    client.deleteSite(globals.api_key, this, (data) => {
+    }, (data) => {
+
+    })
   }
 
   public getCheck(type: string) {
@@ -86,7 +89,7 @@ export class Site {
 
   public parseChecks(data) {
     data.forEach((value, key) => {
-     var tmp = new Check;
+      var tmp = new Check;
       tmp.setData(value);
       this.checks.push(tmp);
     });

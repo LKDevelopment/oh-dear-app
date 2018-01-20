@@ -33,10 +33,12 @@ export class User {
   }
 
   public parseTeams(data) {
-    data['data'].forEach((value, key) => {
-      var tmp = new Team();
-      tmp.setData(value);
-      this.teams.push(tmp);
-    })
+    if (data != undefined && data['data'] != undefined) {
+      data['data'].forEach((value, key) => {
+        var tmp = new Team();
+        tmp.setData(value);
+        this.teams.push(tmp);
+      });
+    }
   }
 }
