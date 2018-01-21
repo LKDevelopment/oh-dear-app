@@ -91,7 +91,9 @@ export class Site {
     data.forEach((value, key) => {
       var tmp = new Check;
       tmp.setData(value);
-      this.checks.push(tmp);
+      if(value.id != 0){
+        this.checks.push(tmp);
+      }
     });
   }
 }
