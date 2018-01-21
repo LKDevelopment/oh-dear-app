@@ -11,9 +11,9 @@ export class Check {
           "enabled": true
         },
    */
-  public id: number;
+  public id: number = 0;
   public type: string;
-  public enabled: boolean;
+  public enabled: boolean = false;
 
   public setData(data) {
     this.id = data.id;

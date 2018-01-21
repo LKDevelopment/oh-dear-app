@@ -1,17 +1,20 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Select your Team.
+      Team Selection
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
+    <ion-item *ngIf="globals.selected_team.id != 0">
+      Your selected Team: {{ globals.selected_team.name }}
+    </ion-item>
     <ion-item>
-      <ion-label>Your actual selected Team:</ion-label>
+      <ion-label>Please select your Team:</ion-label>
       <ion-select [(ngModel)]="selected_team">
-        <ion-option *ngFor="let team of globals.available_teams" [value]="team" [selected]="team.id == globals.selected_team.id">{{ team.name }}</ion-option>
+        <ion-option *ngFor="let team of globals.available_teams" [value]="team">{{ team.name }}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
