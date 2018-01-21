@@ -5,11 +5,11 @@
   "homepage": "http://lukas-kaemmerling.de/",
   "private": true,
   "scripts": {
-    "clean": "ionic-app-scripts clean --webpack ./webpack.js",
-    "build": "ionic-app-scripts build --webpack ./webpack.js",
-    "lint": "ionic-app-scripts lint --webpack ./webpack.js",
-    "ionic:build": "ionic-app-scripts build --webpack ./webpack.js",
-    "ionic:serve": "ionic-app-scripts serve --webpack ./webpack.js"
+    "clean": "ionic-app-scripts clean",
+    "build": "ionic-app-scripts build",
+    "lint": "ionic-app-scripts lint",
+    "ionic:build": "ionic-app-scripts build",
+    "ionic:serve": "ionic-app-scripts serve"
   },
   "dependencies": {
     "@angular/common": "5.0.3",
@@ -81,5 +81,8 @@
       "android",
       "ios"
     ]
-  }
+  },
+  "config": {
+    "ionic_webpack": "./webpack.js"
+  },
 }
