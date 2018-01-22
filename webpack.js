@@ -93,8 +93,8 @@ var devConfig = {
 
   plugins: [
     ionicWebpackFactory.getIonicEnvironmentPlugin(),
-    tailwindcss('./tailwind.js'),
-    ionicWebpackFactory.getCommonChunksPlugin()
+    ionicWebpackFactory.getCommonChunksPlugin(),
+    //tailwindcss('./tailwind.js'),
   ],
 
   // Some libraries import Node modules but don't use them in the browser.
@@ -130,7 +130,7 @@ var prodConfig = {
     ionicWebpackFactory.getCommonChunksPlugin(),
     new ModuleConcatPlugin(),
     new PurifyPlugin(),
-    tailwindcss('./tailwind.js'),
+    //tailwindcss('./tailwind.js'),
   ],
 
   // Some libraries import Node modules but don't use them in the browser.
