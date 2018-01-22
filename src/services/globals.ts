@@ -18,7 +18,7 @@ export class Globals {
   public loader = null;
 
   constructor(public api: ApiClient, public storage: Storage, public loadCtrl: LoadingController) {
-    this.loader = this.loadCtrl.create();
+
   }
 
   public isAuthentificated() {
@@ -32,7 +32,7 @@ export class Globals {
   }
 
   public load(callback_on_success) {
-    this.loader.present();
+
     this.api.getUser(this.api_key, (data) => {
       var tmp = new User();
       tmp.setData(data);
@@ -42,7 +42,6 @@ export class Globals {
     });
     this.api.getSites(this.api_key, (_data) => {
       this.available_sites = [];
-      this.loader.dismiss();
       if (_data != undefined && _data['data'] != undefined) {
         _data['data'].forEach((value, key) => {
           var tmp = new Site;
