@@ -17,10 +17,20 @@ export class Globals {
   public app_version: string = 'DEV BUILD';
   public loader = null;
 
+  /**
+   *
+   * @param {ApiClient} api
+   * @param {Storage} storage
+   * @param {LoadingController} loadCtrl
+   */
   constructor(public api: ApiClient, public storage: Storage, public loadCtrl: LoadingController) {
 
   }
 
+  /**
+   *
+   * @returns {boolean}
+   */
   public isAuthentificated() {
     if (!this.loaded_from_storage) {
       this.loadFromStorage(() => {
@@ -31,6 +41,10 @@ export class Globals {
     return this.api_key !== null && this.user !== null;
   }
 
+  /**
+   *
+   * @param {callback} callback_on_success
+   */
   public load(callback_on_success) {
 
     this.api.getUser(this.api_key, (data) => {
@@ -53,6 +67,10 @@ export class Globals {
     callback_on_success();
   }
 
+  /**
+   *
+   * @param {callback} callback
+   */
   public loadFromStorage(callback) {
     if (this.api_key == null) {
       this.storage.get('api_key')
@@ -99,12 +117,20 @@ export class Globals {
 
   }
 
+  /**
+   *
+   * @param {Team} team
+   */
   public setSelectedTeam(team: Team) {
     this.selected_team = team;
     this.storage.set('selected_team', team);
   }
 
-  public saveApiKey(api_key) {
+  /**
+   *
+   * @param {string} api_key
+   */
+  public saveApiKey(api_key: string) {
     this.api_key = api_key;
     this.storage.set('api_key', api_key);
   }

@@ -9,13 +9,27 @@ import {AddSiteModal} from "../add-site/add-site";
   selector: 'page-list',
   templateUrl: 'sites.html'
 })
+
 export class SitesPage {
   items: Array<Site>;
+
+  /**
+   *
+   * @param {NavController} navCtrl
+   * @param {LoadingController} loadingCtrl
+   * @param {NavParams} navParams
+   * @param {Globals} globals
+   * @param {ModalController} modalCtrl
+   */
   constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, public navParams: NavParams, public globals: Globals, public modalCtrl: ModalController) {
     // If we navigated to this page, we will have an item available as a nav param
     this.items = globals.available_sites;
   }
 
+  /**
+   *
+   * @param ev
+   */
   getSites(ev: any) {
     // set val to the value of the searchbar
     let val = ev.target.value;
@@ -30,15 +44,25 @@ export class SitesPage {
     }
   }
 
+  /**
+   *
+   * @param site
+   */
   openSite(site) {
     this.navCtrl.push(SitePage, {site: site});
   }
 
+  /**
+   *
+   */
   openAddAnotherPage() {
     var modal = this.modalCtrl.create(AddSiteModal);
     modal.present();
   }
 
+  /**
+   *
+   */
   reloadData() {
     let spinner = this.loadingCtrl.create();
     spinner.present();

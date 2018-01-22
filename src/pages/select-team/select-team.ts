@@ -14,6 +14,9 @@ export class SelectTeamModal {
     this.selected_team = globals.selected_team;
   }
 
+  /**
+   *
+   */
   select() {
     let spinner = this.loadingCtrl.create();
     spinner.present();

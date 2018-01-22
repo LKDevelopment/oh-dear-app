@@ -12,12 +12,23 @@ import {SitesPage} from "../sites/sites";
 export class SitePage {
   public site: Site;
 
+  /**
+   *
+   * @param {NavController} navCtrl
+   * @param {NavParams} navParams
+   * @param {Globals} globals
+   * @param {ApiClient} client
+   */
   constructor(public navCtrl: NavController, public navParams: NavParams, public globals: Globals, public client: ApiClient) {
     this.site = navParams.get('site');
 
   }
 
-  toggle(check) {
+  /**
+   *
+   * @param {string} check
+   */
+  toggle(check: string) {
     if (this.site.getCheck(check).enabled) {
       this.site.getCheck(check).disable(this.client, this.globals);
     } else {
@@ -25,6 +36,9 @@ export class SitePage {
     }
   }
 
+  /**
+   *
+   */
   deleteSite() {
     this.globals.available_sites = this.globals.available_sites.filter((value) => value.id != this.site.id);
     this.site.delete(this.client, this.globals);
