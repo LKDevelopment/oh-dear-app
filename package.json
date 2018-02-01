@@ -1,6 +1,7 @@
 {
   "name": "OhDearApp",
   "version": "0.0.5",
+  "license": "MIT",
   "author": "Lukas Kämmerling",
   "homepage": "http://lukas-kaemmerling.de/",
   "private": true,
