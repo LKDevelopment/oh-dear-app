@@ -49,6 +49,7 @@ export class Site {
   public updated_at: string;
   public checks: Array<Check> = [];
   public uptime_check: Check;
+  public broken_links_check: Check;
   public certificate_health_check: Check;
   public mixed_content_check: Check;
   public certificate_transparency_check: Check;
@@ -68,6 +69,7 @@ export class Site {
     this.certificate_health_check = this.getCheck('certificate_health');
     this.mixed_content_check = this.getCheck('mixed_content');
     this.certificate_transparency_check = this.getCheck('certificate_transparency');
+    this.broken_links_check = this.getCheck('broken_links');
   }
 
   public delete(client: ApiClient, globals: Globals) {
