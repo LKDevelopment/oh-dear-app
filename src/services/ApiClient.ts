@@ -6,12 +6,20 @@ import {Site} from "../models/site";
 
 @Injectable()
 export class ApiClient {
-
+  /**
+   *
+   * @param {HttpClient} client
+   */
   constructor(public client: HttpClient) {
 
   }
 
-  public getSites(api_key, callback) {
+  /**
+   *
+   * @param {string} api_key
+   * @param callback
+   */
+  public getSites(api_key: string, callback) {
     this.client.get('https://proxy.lkdev.co/api/sites', {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + api_key).set('Accept', 'application/json'),
     })
@@ -20,7 +28,12 @@ export class ApiClient {
       );
   }
 
-  public getUser(api_key, callback) {
+  /**
+   *
+   * @param {string} api_key
+   * @param callback
+   */
+  public getUser(api_key: string, callback) {
     this.client.get('https://proxy.lkdev.co/api/me', {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + api_key).set('Accept', 'application/json'),
     })
@@ -29,7 +42,13 @@ export class ApiClient {
       );
   }
 
-  public enableCheck(api_key, check: Check, callback) {
+  /**
+   *
+   * @param {string} api_key
+   * @param {Check} check
+   * @param callback
+   */
+  public enableCheck(api_key: string, check: Check, callback) {
     this.client.post('https://proxy.lkdev.co/api/checks/' + check.id + '/enable', {}, {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + api_key).set('Accept', 'application/json'),
     })
@@ -38,7 +57,13 @@ export class ApiClient {
       );
   }
 
-  public disableCheck(api_key, check: Check, callback) {
+  /**
+   *
+   * @param {string} api_key
+   * @param {Check} check
+   * @param callback
+   */
+  public disableCheck(api_key: string, check: Check, callback) {
     this.client.post('https://proxy.lkdev.co/api/checks/' + check.id + '/disable', {}, {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + api_key).set('Accept', 'application/json'),
     })
@@ -47,7 +72,15 @@ export class ApiClient {
       );
   }
 
-  public addSite(api_key, team: Team, url: string, success_callback, error_callback) {
+  /**
+   *
+   * @param {string} api_key
+   * @param {Team} team
+   * @param {string} url
+   * @param success_callback
+   * @param error_callback
+   */
+  public addSite(api_key: string, team: Team, url: string, success_callback, error_callback) {
     this.client.post('https://proxy.lkdev.co/api/sites', {url: url, team_id: team.id}, {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + api_key).set('Accept', 'application/json'),
     }).subscribe(
@@ -56,7 +89,14 @@ export class ApiClient {
     );
   }
 
-  public deleteSite(api_key, site: Site, success_callback, error_callback) {
+  /**
+   *
+   * @param {string} api_key
+   * @param {Site} site
+   * @param success_callback
+   * @param error_callback
+   */
+  public deleteSite(api_key: string, site: Site, success_callback, error_callback) {
     this.client.delete('https://proxy.lkdev.co/api/sites/' + site.id + '', {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + api_key).set('Accept', 'application/json'),
     })

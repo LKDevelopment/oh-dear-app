@@ -16,6 +16,9 @@ export class LogoutModal {
 
   }
 
+  /**
+   *
+   */
   logout() {
     let spinner = this.loadingCtrl.create();
     spinner.present();

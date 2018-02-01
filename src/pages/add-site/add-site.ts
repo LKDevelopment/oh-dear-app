@@ -15,10 +15,18 @@ export class AddSiteModal {
   constructor(public navCtrl: NavController, public viewCtrl: ViewController, public globals: Globals, public modalCtrl: ModalController, public loadingCtrl: LoadingController, public client: ApiClient) {
     this.error = null;
   }
+
+  /**
+   *
+   */
   close(){
     this.error = null;
     this.viewCtrl.dismiss();
   }
+
+  /**
+   *
+   */
   add() {
     this.error = null;
     let spinner = this.loadingCtrl.create();

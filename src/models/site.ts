@@ -80,7 +80,7 @@ export class Site {
   }
 
   public getCheck(type: string) {
-    var tmp: Check = null;
+    var tmp: Check = new Check();
     this.checks.forEach((value, key) => {
       if (value.type == type) {
         tmp = value;
@@ -93,7 +93,9 @@ export class Site {
     data.forEach((value, key) => {
       var tmp = new Check;
       tmp.setData(value);
-      this.checks.push(tmp);
+      if(value.id != 0){
+        this.checks.push(tmp);
+      }
     });
   }
 }

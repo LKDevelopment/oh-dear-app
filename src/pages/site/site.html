@@ -32,7 +32,7 @@
         </section>
       </article>
     </div>
-    <div class="w-full px-4 mb-8 cloak-fade ">
+    <div class="w-full px-4 mb-8 cloak-fade " *ngIf="site.mixed_content_check != null">
       <article class="card p-4 h-full flex flex-col  shadow shadow-mg">
         <header class="mb-4 flex items-center justify-between"><h2 class="h1 mb-0 text-lg  test-name">
          Broken Links
@@ -62,7 +62,7 @@
         </section>
       </article>
     </div>
-    <div class="w-full px-4 mb-8 cloak-fade ">
+    <div class="w-full px-4 mb-8 cloak-fade " *ngIf="site.certificate_health_check != null">
       <article class="card p-4 h-full flex flex-col  shadow shadow-mg">
         <header class="mb-4 flex items-center justify-between"><h2 class="h1 mb-0 text-lg  test-name">
           Certificate Health
@@ -78,7 +78,7 @@
         </section>
       </article>
     </div>
-    <div class="w-full px-4 mb-8 cloak-fade ">
+    <div class="w-full px-4 mb-8 cloak-fade " *ngIf="site.certificate_transparency_check != null">
       <article class="card p-4 h-full flex flex-col  shadow shadow-mg">
         <header class="mb-4 flex items-center justify-between"><h2 class="h1 mb-0 text-lg  test-name">
           Certificate transparency

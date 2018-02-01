@@ -14,6 +14,9 @@ export class LoginModal {
 
   }
 
+  /**
+   *
+   */
   login() {
     let spinner = this.loadingCtrl.create();
     spinner.present();
