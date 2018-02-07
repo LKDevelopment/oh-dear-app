@@ -4,8 +4,8 @@ Apple Testflight: Please open a Issue or write an E-Mail to: apps@lk-development
 ## Test & Develop locally
 ```bash
 npm install -g ionic@latest
-git clone https://github.com/LKDevelopment/hetzner-cloud-mobile-app.git
-cd hetzner-cloud-mobile-app
+git clone https://github.com/LKDevelopment/oh-dear-app.git
+cd oh-dear-app
 npm install
 ionic serve
 ```
